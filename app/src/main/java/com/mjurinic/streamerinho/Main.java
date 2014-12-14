@@ -30,8 +30,6 @@ public class Main extends Activity {
         _camera = getCameraInstance();
         _preview = new CameraPreview(this, _camera);
 
-
-
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(_preview);
 
@@ -67,6 +65,7 @@ public class Main extends Activity {
         super.onPause();
         releaseMediaRecorder();       // if you are using MediaRecorder, release it first
         releaseCamera();              // release the camera immediately on pause event
+        // zatvori UDP socket nekak :S
     }
 
     @Override

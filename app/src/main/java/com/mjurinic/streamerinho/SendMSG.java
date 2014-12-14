@@ -48,6 +48,9 @@ public class SendMSG extends AsyncTask<String, String, String> {
         catch (Exception e) {
             Log.d("Exception: ", e.toString());
         }
+        finally {
+            clientSocket.close();
+        }
 
         return null;
     }
