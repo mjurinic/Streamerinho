@@ -26,7 +26,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             _camera.setPreviewCallback(new Camera.PreviewCallback() {
                 @Override
                 public void onPreviewFrame(byte[] data, Camera camera) {
-                    new SendMSG(data.length).execute();
+                    //new SendMSG(data.length).execute();
+                    new SendMSG(data).execute();
                 }
             });
 
