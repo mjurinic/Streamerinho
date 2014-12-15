@@ -1,10 +1,15 @@
 package com.mjurinic.streamerinho;
 
 import android.content.Context;
+import android.graphics.ImageFormat;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import java.io.ByteArrayOutputStream;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -26,12 +31,19 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             _camera.setPreviewCallback(new Camera.PreviewCallback() {
                 @Override
                 public void onPreviewFrame(byte[] data, Camera camera) {
-                    //new SendMSG(data.length).execute();
+
+                    Camera.Size previewSize = camera.getParameters().getPreviewSize();
+                    YuvImage yuvimage = new YuvImage(data, ImageFormat.NV21, previewSize.width, previewSize.height, null);
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+                    yuvimage.compressToJpeg(new Rect(0, 0, previewSize.width, previewSize.height), 100, out);
+                    byte[] jdata = out.toByteArray();
+
                     try {
-                        new SendMSG(data, data.length).execute();
+                        new SendMSG(jdata, jdata.length).execute();
                     }
-                    catch (RuntimeException e) {
-                        Log.d("Exception: ", e.toString());
+                    catch (Exception e) {
+                        Log.d("SendMSG Exception: ", e.toString());
                     }
                 }
             });

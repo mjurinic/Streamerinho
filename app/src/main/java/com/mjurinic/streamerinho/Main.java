@@ -1,6 +1,7 @@
 package com.mjurinic.streamerinho;
 
 import android.app.Activity;
+import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
@@ -32,7 +33,8 @@ public class Main extends Activity {
         _preview = new CameraPreview(this, _camera);
 
         Camera.Parameters params = _camera.getParameters();
-        params.setPreviewSize(640, 480);
+        params.setPreviewSize(320, 240);
+        params.setPreviewFormat(ImageFormat.NV21);
         _camera.setParameters(params);
 
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
