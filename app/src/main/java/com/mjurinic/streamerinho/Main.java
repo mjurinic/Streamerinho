@@ -33,7 +33,7 @@ public class Main extends Activity {
         _preview = new CameraPreview(this, _camera);
 
         Camera.Parameters params = _camera.getParameters();
-        params.setPreviewSize(320, 240);
+        params.setPreviewSize(1280, 720);
         params.setPreviewFormat(ImageFormat.NV21);
         _camera.setParameters(params);
 

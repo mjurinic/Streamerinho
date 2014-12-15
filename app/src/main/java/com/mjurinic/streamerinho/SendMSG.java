@@ -24,9 +24,9 @@ public class SendMSG extends AsyncTask<String, String, String> {
     protected void onPreExecute() {
         try {
             clientSocket = new DatagramSocket();
-            //serverIP = InetAddress.getByName("10.0.2.2");
-            serverIP = InetAddress.getByName("192.168.1.5");
-            //serverIP = InetAddress.getByName("192.168.1.3");
+            //serverIP = InetAddress.getByName("10.0.2.2");         // virtual device
+            serverIP = InetAddress.getByName("192.168.1.5");        // moj komp
+            //serverIP = InetAddress.getByName("192.168.1.10");     // laptop
             serverPort = 8080;
         }
         catch (Exception e) {

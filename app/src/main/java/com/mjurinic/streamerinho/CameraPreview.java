@@ -36,7 +36,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                     YuvImage yuvimage = new YuvImage(data, ImageFormat.NV21, previewSize.width, previewSize.height, null);
                     ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-                    yuvimage.compressToJpeg(new Rect(0, 0, previewSize.width, previewSize.height), 100, out);
+                    yuvimage.compressToJpeg(new Rect(0, 0, previewSize.width, previewSize.height), 75, out);
                     byte[] jdata = out.toByteArray();
 
                     try {
