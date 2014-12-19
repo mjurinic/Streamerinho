@@ -12,6 +12,7 @@ public class SendFrame extends AsyncTask<String, String, String> {
 
     DatagramSocket clientSocket;
     InetAddress serverIP;
+    static String stringIP;
     int serverPort;
     byte[] data;
 
@@ -19,11 +20,20 @@ public class SendFrame extends AsyncTask<String, String, String> {
         data = _data;
     }
 
+    public static void setIP(String _serverIP) {
+        stringIP = _serverIP;
+    }
+
+    public static String getIP() {
+        return stringIP;
+    }
+
     protected void onPreExecute() {
         try {
             clientSocket = new DatagramSocket();
+            serverIP = InetAddress.getByName(stringIP);
             //serverIP = InetAddress.getByName("10.0.2.2");         // virtual device
-            serverIP = InetAddress.getByName("192.168.1.5");        // moj komp
+            //serverIP = InetAddress.getByName("192.168.1.5");        // moj komp
             //serverIP = InetAddress.getByName("192.168.1.10");     // laptop
             serverPort = 8080;
         }

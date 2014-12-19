@@ -4,5 +4,7 @@
     <string name="app_name">StreamSource</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_start_stream">StartStream</string>
+    <string name="title_activity_stream_setup">StreamSetup</string>
 
 </resources>
